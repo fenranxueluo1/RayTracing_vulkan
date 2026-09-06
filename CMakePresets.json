@@ -1,0 +1,132 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": { "major": 4, "minor": 3, "patch": 0 },
+    "configurePresets": [
+      {
+        "name": "windows-debug",
+        "displayName": "Debug (Windows / MinGW)",
+        "generator": "MinGW Makefiles",
+        "binaryDir": "${sourceDir}/build",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug",
+          "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        },
+        "condition": {
+          "type": "equals",
+          "lhs": "${hostSystemName}",
+          "rhs": "Windows"
+        }
+      },
+      {
+        "name": "windows-release",
+        "displayName": "Release (Windows / MinGW)",
+        "generator": "MinGW Makefiles",
+        "binaryDir": "${sourceDir}/build",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        },
+        "condition": {
+          "type": "equals",
+          "lhs": "${hostSystemName}",
+          "rhs": "Windows"
+        }
+      },
+      {
+        "name": "linux-debug",
+        "displayName": "Debug (Linux)",
+        "binaryDir": "${sourceDir}/build",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Debug",
+          "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        },
+        "condition": {
+          "type": "equals",
+          "lhs": "${hostSystemName}",
+          "rhs": "Linux"
+        }
+      },
+      {
+        "name": "linux-release",
+        "displayName": "Release (Linux)",
+        "binaryDir": "${sourceDir}/build",
+        "cacheVariables": {
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        },
+        "condition": {
+          "type": "equals",
+          "lhs": "${hostSystemName}",
+          "rhs": "Linux"
+        }
+      }
+    ],
+    "buildPresets": [
+      {
+        "name": "windows-debug",
+        "configurePreset": "windows-debug",
+        "jobs": 16
+      },
+      {
+        "name": "windows-release",
+        "configurePreset": "windows-release",
+        "jobs": 16
+      },
+      {
+        "name": "linux-debug",
+        "configurePreset": "linux-debug",
+        "jobs": 16
+      },
+      {
+        "name": "linux-release",
+        "configurePreset": "linux-release",
+        "jobs": 16
+      },
+      {
+        "name": "windows-debug-run",
+        "configurePreset": "windows-debug",
+        "targets": ["RayTracing_RUN"],
+        "jobs": 16
+      },
+      {
+        "name": "linux-debug-run",
+        "configurePreset": "linux-debug",
+        "targets": ["RayTracing_RUN"],
+        "jobs": 16
+      }
+    ],
+    "workflowPresets": [
+      {
+        "name": "windows-debug",
+        "displayName": "配置 + 生成 (Windows / MinGW)",
+        "steps": [
+          { "type": "configure", "name": "windows-debug" },
+          { "type": "build", "name": "windows-debug" }
+        ]
+      },
+      {
+        "name": "linux-debug",
+        "displayName": "配置 + 生成 (Linux)",
+        "steps": [
+          { "type": "configure", "name": "linux-debug" },
+          { "type": "build", "name": "linux-debug" }
+        ]
+      },
+      {
+        "name": "windows-debug-run",
+        "displayName": "配置 + 生成 + 运行 (Windows / MinGW)",
+        "steps": [
+          { "type": "configure", "name": "windows-debug" },
+          { "type": "build", "name": "windows-debug-run" }
+        ]
+      },
+      {
+        "name": "linux-debug-run",
+        "displayName": "配置 + 生成 + 运行 (Linux)",
+        "steps": [
+          { "type": "configure", "name": "linux-debug" },
+          { "type": "build", "name": "linux-debug-run" }
+        ]
+      }
+    ]
+  }

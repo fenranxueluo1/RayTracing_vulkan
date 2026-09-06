@@ -1,0 +1,23 @@
+# Build directories
+build/
+
+# IDE / editor
+.vs/
+.vscode/
+.idea/
+CMakeSettings.json
+CMakeUserPresets.json
+*.user
+
+# Compiled output
+*.exe
+*.dll
+*.so
+*.lib
+*.a
+*.pdb
+*.obj
+*.o
+
+# Runtime files
+imgui.ini
