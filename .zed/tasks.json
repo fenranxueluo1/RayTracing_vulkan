@@ -1,0 +1,58 @@
+[
+  {
+    "label": "CMake: 配置 Debug (Configure)",
+    "command": "cmake",
+    "args": ["--preset", "linux-debug"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "reveal": "always",
+    "hide": "never",
+    "allow_concurrent_runs": false
+  },
+  {
+    "label": "CMake: 生成 Debug (Build)",
+    "command": "cmake",
+    "args": ["--workflow", "--preset", "linux-debug"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "reveal": "always",
+    "hide": "never",
+    "allow_concurrent_runs": false
+  },
+  {
+    "label": "▶ 编译并运行 (Debug)",
+    "command": "cmake",
+    "args": ["--workflow", "--preset", "linux-debug-run"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "reveal": "always",
+    "hide": "never",
+    "allow_concurrent_runs": false,
+    "use_new_terminal": true
+  },
+  {
+    "label": "CMake: 配置 Release (Configure)",
+    "command": "cmake",
+    "args": ["--preset", "linux-release"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "reveal": "always",
+    "hide": "never",
+    "allow_concurrent_runs": false
+  },
+  {
+    "label": "CMake: 生成 Release (Build)",
+    "command": "cmake",
+    "args": ["--workflow", "--preset", "linux-release"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "reveal": "always",
+    "hide": "never",
+    "allow_concurrent_runs": false
+  },
+  {
+    "label": "▶ 编译并运行 (Release)",
+    "command": "cmake",
+    "args": ["--workflow", "--preset", "linux-release-run"],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "reveal": "always",
+    "hide": "never",
+    "allow_concurrent_runs": false,
+    "use_new_terminal": true
+  }
+]
